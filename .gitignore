@@ -1,0 +1,16 @@
+downloads/
+*.tar.gz
+*.zip
+node_modules/
+.env
+downloads/
+*.tar.gz
+*.zip
+node_modules/
+.env
+.config/
+downloads/
+node_modules/
+*.zip
+*.tar.gz
+.env
