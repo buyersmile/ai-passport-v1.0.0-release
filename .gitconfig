@@ -5,5 +5,5 @@
 	helper = 
 	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
 [user]
-	email = your-email@example.com
+	email = อีเมลที่ใช้สมัคร GitHub
 	name = buyersmile
