@@ -1,0 +1,16 @@
+---
+description: ขั้นตอนทำงานของ Agent (spec-first, memory, audit)
+alwaysApply: true
+---
+
+<!-- agent-kit:start -->
+## Agent Workflow (agent-kit)
+ทำตามลำดับนี้ทุกงานพัฒนา:
+1. **เริ่ม session:** `node skill-manager.mjs mem start "<งานวันนี้>"` แล้วอ่านผลก่อนเริ่ม
+2. **ก่อนเขียนโค้ด:** `node skill-manager.mjs spec new <slug>` กรอก requirement → สเปก → แผน → แผนทดสอบ ให้ผู้ใช้อนุมัติ (`spec approve`) และต้องผ่าน `node skill-manager.mjs spec gate <slug>` ก่อนลงมือ (งานแก้เล็กน้อยย่อสเปกได้ แต่ห้ามข้ามการเข้าใจโจทย์)
+3. **ระหว่างงาน:** บันทึกด้วย `node skill-manager.mjs mem add decision|attempt|constraint "<ข้อความ>"` เมื่อตัดสินใจสำคัญ ลองแล้วไม่ได้ผล หรือพบข้อจำกัด — เก็บเฉพาะบริบททางเทคนิค ห้ามใส่ข้อมูลคดีหรือข้อมูลส่วนบุคคล
+4. **งาน front-end:** รัน `node skill-manager.mjs audit` ต้องไม่มี warn ก่อนส่งงาน
+5. **เมื่อผู้ใช้แก้งานซ้ำ:** `node skill-manager.mjs feedback <สกิล> "<สิ่งที่ถูกแก้>"` เพื่อให้เสนอปรับปรุงสกิล
+6. **จบ session:** `node skill-manager.mjs mem end "<สรุปสถานะ>"`
+7. **ข้อห้าม:** ห้ามแก้สกิล กฎความปลอดภัย หรือกฎกฎหมายเอง เสนอเป็นข้อเสนอให้ผู้ใช้อนุมัติเท่านั้น
+<!-- agent-kit:end -->
